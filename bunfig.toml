@@ -1,0 +1,8 @@
+[test]
+# Measure the plugin's source, not the test helpers.
+coverageSkipTestFiles = true
+coveragePathIgnorePatterns = ["test/**"]
+# CI fails if coverage drops below these (fractions, not percentages).
+coverageThreshold = { lines = 0.9, functions = 0.85 }
+coverageReporter = ["text", "lcov"]
+coverageDir = "coverage"

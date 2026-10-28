@@ -1,0 +1,93 @@
+{
+  "name": "@ms1design/opencode-systemone-plugin",
+  "version": "0.1.0",
+  "description": "OpenCode plugin that sends every tool call the agent makes through a fast \"System One\" risk reviewer, and asks you in OpenCode's own permission prompt before anything risky runs.",
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "ai-agent",
+    "guardrails",
+    "llm-security",
+    "prompt-injection",
+    "secrets",
+    "human-in-the-loop"
+  ],
+  "homepage": "https://github.com/OWNER/opencode-systemone-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/OWNER/opencode-systemone-plugin/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OWNER/opencode-systemone-plugin.git"
+  },
+  "license": "MIT",
+  "author": "Mieszko Syty <mieszko@ms1design.pl>",
+  "type": "module",
+  "packageManager": "bun@1.4.4",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./server": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./core": {
+      "types": "./dist/core.d.ts",
+      "import": "./dist/core.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "!dist/**/*.map",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=22.14"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist coverage",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "test:coverage": "bun test --coverage",
+    "test:e2e": "SYSTEMONE_E2E=1 bun test test/e2e",
+    "check:package": "bun run build && publint --strict && attw --pack . --profile esm-only",
+    "check": "bun run lint && bun run typecheck && bun run test:coverage && bun run check:package",
+    "prepare": "lefthook install || true",
+    "prepublishOnly": "bun run clean && bun run check"
+  },
+  "peerDependencies": {
+    "@opencode/plugin": "^2.2.0"
+  },
+  "peerDependenciesMeta": {
+    "@opencode/plugin": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "0.18.5",
+    "@biomejs/biome": "2.6.3",
+    "@commitlint/cli": "21.2.4",
+    "@commitlint/config-conventional": "21.2.4",
+    "@opencode/plugin": "2.2.0",
+    "@types/bun": "1.4.4",
+    "lefthook": "2.2.2",
+    "publint": "0.3.25",
+    "typescript": "~5.9.3"
+  }
+}

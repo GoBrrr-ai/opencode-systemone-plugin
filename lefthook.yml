@@ -1,0 +1,23 @@
+# Git hooks, installed automatically by `bun install` (see "prepare" in package.json).
+# Skip once in an emergency with LEFTHOOK=0 git commit …
+
+pre-commit:
+  parallel: true
+  jobs:
+    - name: lint & format staged files
+      glob: "*.{ts,js,json,jsonc,md}"
+      run: bunx biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      stage_fixed: true
+    - name: typecheck
+      glob: "*.ts"
+      run: bunx tsc --noEmit
+
+commit-msg:
+  jobs:
+    - name: conventional commit message
+      run: bunx commitlint --edit {1}
+
+pre-push:
+  jobs:
+    - name: unit tests
+      run: bun test
