@@ -1,0 +1,57 @@
+name: Bug report
+description: Something doesn't work as documented.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report! **Security issues** (a way to bypass the guard, a secret leak) must not be filed here. See [SECURITY.md](../blob/main/SECURITY.md).
+
+        Please remove secrets, tokens and private paths from anything you paste.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. SYSTEMONE_MODEL=… opencode
+        2. Ask the agent to …
+        3. …
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Run with `SYSTEMONE_LOG_LEVEL=debug` and paste the `[systemone]` lines. An audit-log excerpt (`SYSTEMONE_AUDIT_LOG`) helps too.
+      render: text
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin version
+      placeholder: "0.2.0"
+    validations:
+      required: true
+  - type: input
+    id: opencode-version
+    attributes:
+      label: OpenCode version (`opencode --version`)
+      placeholder: "2.2.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: backend
+    attributes:
+      label: Reviewer backend
+      options:
+        - opencode (OpenCode's providers)
+        - http (OpenAI-compatible endpoint)
+        - none (patterns only)
+    validations:
+      required: true
