@@ -8,7 +8,7 @@ Every tool call your OpenCode agent makes is risk-checked before it runs, by fas
 "System One" reviewer model. Anything risky stops at OpenCode's own permission prompt, so **you** decide.
 
 [![CI](https://github.com/GoBrrr-ai/opencode-systemone-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/GoBrrr-ai/opencode-systemone-plugin/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/@ms1design/opencode-systemone-plugin?logo=npm)](https://www.npmjs.com/package/@ms1design/opencode-systemone-plugin)
+[![npm](https://img.shields.io/npm/v/@narandill/opencode-systemone-plugin?logo=npm)](https://www.npmjs.com/package/@narandill/opencode-systemone-plugin)
 [![OpenCode](https://img.shields.io/badge/OpenCode-v2-black)](https://opencode.ai)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
@@ -50,7 +50,7 @@ you already use in OpenCode works, with no extra API key:
 {
   "plugins": [
     {
-      "package": "@ms1design/opencode-systemone-plugin",
+      "package": "@narandill/opencode-systemone-plugin",
       "options": { "model": "anthropic/claude-haiku-4-5" } // any "<provider>/<model>" from `opencode models`
     }
   ]
@@ -63,7 +63,7 @@ you already use in OpenCode works, with no extra API key:
 you'll get a permission prompt with System One's reason.
 
 > [!TIP]
-> Prefer the CLI? `opencode plugin add @ms1design/opencode-systemone-plugin` installs it globally; then set
+> Prefer the CLI? `opencode plugin add @narandill/opencode-systemone-plugin` installs it globally; then set
 > `SYSTEMONE_MODEL` in your environment and run `opencode service restart`. Use **one** of the two methods:
 > listing the plugin twice would load it twice.
 >
@@ -79,7 +79,7 @@ Keep reviews on your machine with Ollama, LM Studio or vLLM, or use any hosted O
 {
   "plugins": [
     {
-      "package": "@ms1design/opencode-systemone-plugin",
+      "package": "@narandill/opencode-systemone-plugin",
       "options": {
         "backend": "http",
         "baseUrl": "http://localhost:11434/v1",
