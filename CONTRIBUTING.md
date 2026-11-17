@@ -98,7 +98,7 @@ every release carries a provenance attestation.
      `bun install && bun run check && npm publish --access public --provenance=false`, then add the trusted
      publisher. A new trusted-publisher configuration must be used for a successful publish within 2 days.
 4. **Branch protection on `main`:** require the _CI_ checks and pull requests.
-5. **Enable** Dependabot alerts/updates and CodeQL code scanning (workflows are included).
+5. **Enable** Dependabot alerts/updates (configuration is included).
 
 ## Reporting security issues
 
