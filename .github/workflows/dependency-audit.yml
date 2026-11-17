@@ -1,0 +1,40 @@
+# Weekly vulnerability scan of the lockfile. Complements the per-PR
+# dependency review: this one catches drift between pull requests.
+#
+# Gates on high/critical only; moderate findings stay visible in the log.
+# GHSA-fc5q-39xc-vjpf (picomatch ReDoS) is exempt until a fixed release
+# exists - drop the exemption once picomatch ships 4.0.8+.
+name: Dependency audit
+
+on:
+  schedule:
+    - cron: "23 6 * * 1" # Mondays
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dependency-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    name: Audit lockfile vulnerabilities
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version-file: package.json
+
+      - name: Fail on high or critical advisories
+        run: |
+          bun audit --json > audit.json
+          count="$(jq '[to_entries[].value[] | select((.severity == "high" or .severity == "critical") and (.url | contains("GHSA-fc5q-39xc-vjpf") | not))] | length' audit.json)"
+          echo "high/critical advisories: $count"
+          test "$count" -eq 0
