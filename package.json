@@ -1,6 +1,6 @@
 {
   "name": "@narandill/opencode-systemone-plugin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "OpenCode plugin that sends every tool call the agent makes through a fast \"System One\" risk reviewer, and asks you in OpenCode's own permission prompt before anything risky runs.",
   "keywords": [
     "opencode",
