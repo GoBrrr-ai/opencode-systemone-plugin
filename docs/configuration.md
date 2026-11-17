@@ -14,7 +14,7 @@ If both are set, **the plugin option wins**.
 {
   "plugins": [
     {
-      "package": "@ms1design/opencode-systemone-plugin",
+      "package": "@narandill/opencode-systemone-plugin",
       "options": {
         "model": "anthropic/claude-haiku-4-5",
         "reviewOutput": true,
