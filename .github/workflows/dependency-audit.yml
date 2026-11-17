@@ -32,9 +32,16 @@ jobs:
         with:
           bun-version-file: package.json
 
+      - name: Audit lockfile
+        run: |
+          bun audit --json > audit.json; rc=$?
+          echo "bun audit exit: $rc"
+          cat audit.json
+          echo "--- stderr was empty above if blank ---"
+          [ "$rc" -eq 0 ] || exit "$rc"
+
       - name: Fail on high or critical advisories
         run: |
-          bun audit --json > audit.json
           count="$(jq '[to_entries[].value[] | select((.severity == "high" or .severity == "critical") and (.url | contains("GHSA-fc5q-39xc-vjpf") | not))] | length' audit.json)"
           echo "high/critical advisories: $count"
           test "$count" -eq 0
