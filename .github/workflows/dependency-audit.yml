@@ -34,11 +34,10 @@ jobs:
 
       - name: Audit lockfile
         run: |
-          bun audit --json > audit.json; rc=$?
-          echo "bun audit exit: $rc"
-          cat audit.json
-          echo "--- stderr was empty above if blank ---"
-          [ "$rc" -eq 0 ] || exit "$rc"
+          # bun audit exits nonzero when advisories exist (npm-audit
+          # semantics) - the gate below decides, not the exit code.
+          bun audit --json > audit.json || true
+          jq -e 'type == "object"' audit.json >/dev/null || { echo 'bun audit did not produce valid JSON'; cat audit.json; exit 1; }
 
       - name: Fail on high or critical advisories
         run: |
