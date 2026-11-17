@@ -8,7 +8,7 @@ releases work.
 You need [Bun](https://bun.sh) 1.4+ (the exact version is pinned in `package.json` → `packageManager`).
 
 ```bash
-git clone https://github.com/OWNER/opencode-systemone-plugin.git
+git clone https://github.com/GoBrrr-ai/opencode-systemone-plugin.git
 cd opencode-systemone-plugin
 bun install          # installs dependencies and the git hooks
 ```
@@ -88,20 +88,17 @@ every release carries a provenance attestation.
 
 ### One-time setup
 
-1. **Replace the `OWNER` placeholder** with the real GitHub owner, everywhere:
-   `grep -rl OWNER --exclude-dir=node_modules . | xargs sed -i 's#OWNER/opencode-systemone-plugin#<owner>/opencode-systemone-plugin#g'`.
-   npm checks `repository.url` in `package.json` against the publishing repository, so this is required.
-2. **GitHub → Settings → Actions → General:** allow GitHub Actions to create and approve pull requests (needed
+1. **GitHub → Settings → Actions → General:** allow GitHub Actions to create and approve pull requests (needed
    by release-please).
-3. **GitHub → Settings → Environments:** create an environment named `npm`. Optionally add required reviewers
+2. **GitHub → Settings → Environments:** create an environment named `npm`. Optionally add required reviewers
    to approve each publish.
-4. **npmjs.com → package settings → Trusted publishing:** add a GitHub Actions publisher with your
+3. **npmjs.com → package settings → Trusted publishing:** add a GitHub Actions publisher with your
    owner/user, the repository name, workflow `release.yml` and environment `npm`.
    - If npm requires the package to exist first, do the very first publish manually from a clean checkout:
      `bun install && bun run check && npm publish --access public --provenance=false`, then add the trusted
      publisher. A new trusted-publisher configuration must be used for a successful publish within 2 days.
-5. **Branch protection on `main`:** require the _CI_ checks and pull requests.
-6. **Enable** Dependabot alerts/updates and CodeQL code scanning (workflows are included).
+4. **Branch protection on `main`:** require the _CI_ checks and pull requests.
+5. **Enable** Dependabot alerts/updates and CodeQL code scanning (workflows are included).
 
 ## Reporting security issues
 

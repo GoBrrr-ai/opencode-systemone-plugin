@@ -7,7 +7,7 @@
 Every tool call your OpenCode agent makes is risk-checked before it runs, by fast pattern checks and a
 "System One" reviewer model. Anything risky stops at OpenCode's own permission prompt, so **you** decide.
 
-[![CI](https://github.com/OWNER/opencode-systemone-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/opencode-systemone-plugin/actions/workflows/ci.yml)
+[![CI](https://github.com/GoBrrr-ai/opencode-systemone-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/GoBrrr-ai/opencode-systemone-plugin/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/@ms1design/opencode-systemone-plugin?logo=npm)](https://www.npmjs.com/package/@ms1design/opencode-systemone-plugin)
 [![OpenCode](https://img.shields.io/badge/OpenCode-v2-black)](https://opencode.ai)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
