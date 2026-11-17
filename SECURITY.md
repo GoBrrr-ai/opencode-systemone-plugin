@@ -12,7 +12,7 @@ System One is a security control, so reports about it are taken seriously and ha
 ## Reporting a vulnerability
 
 **Please don't open a public issue.** Report privately through
-[GitHub security advisories](https://github.com/OWNER/opencode-systemone-plugin/security/advisories/new).
+[GitHub security advisories](https://github.com/GoBrrr-ai/opencode-systemone-plugin/security/advisories/new).
 
 Include what you can:
 

@@ -12,13 +12,13 @@
     "secrets",
     "human-in-the-loop"
   ],
-  "homepage": "https://github.com/OWNER/opencode-systemone-plugin#readme",
+  "homepage": "https://github.com/GoBrrr-ai/opencode-systemone-plugin#readme",
   "bugs": {
-    "url": "https://github.com/OWNER/opencode-systemone-plugin/issues"
+    "url": "https://github.com/GoBrrr-ai/opencode-systemone-plugin/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OWNER/opencode-systemone-plugin.git"
+    "url": "git+https://github.com/GoBrrr-ai/opencode-systemone-plugin.git"
   },
   "license": "MIT",
   "author": "Mieszko Syty <mieszko@ms1design.pl>",
