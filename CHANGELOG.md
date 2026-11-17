@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.0](https://github.com/GoBrrr-ai/opencode-systemone-plugin/compare/v0.1.0...v0.2.0) (2026-11-17)
+
+
+### Features
+
+* rename package to the [@narandill](https://github.com/narandill) scope ([a59f611](https://github.com/GoBrrr-ai/opencode-systemone-plugin/commit/a59f61105ff9aa65412e845fb5dd0fd887b13774))
+
+## Changelog
+
 All notable changes to this project are documented here. From the first automated release onward, this file is
 maintained by [release-please](https://github.com/googleapis/release-please) from
 [Conventional Commits](https://www.conventionalcommits.org).
