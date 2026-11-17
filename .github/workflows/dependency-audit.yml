@@ -32,9 +32,15 @@ jobs:
         with:
           bun-version-file: package.json
 
+      - name: Audit lockfile
+        run: |
+          # bun audit exits nonzero when advisories exist (npm-audit
+          # semantics) - the gate below decides, not the exit code.
+          bun audit --json > audit.json || true
+          jq -e 'type == "object"' audit.json >/dev/null || { echo 'bun audit did not produce valid JSON'; cat audit.json; exit 1; }
+
       - name: Fail on high or critical advisories
         run: |
-          bun audit --json > audit.json
           count="$(jq '[to_entries[].value[] | select((.severity == "high" or .severity == "critical") and (.url | contains("GHSA-fc5q-39xc-vjpf") | not))] | length' audit.json)"
           echo "high/critical advisories: $count"
           test "$count" -eq 0
